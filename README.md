@@ -18,8 +18,8 @@ A Python-based web application that analyzes how well a resume matches a job des
 
 ## Screenshots
 
-![UI](assets/ui_1.jpg)
-![Result](assets/ui_2.jpg)
+![UI](assets/ui_1.png)
+![Result](assets/ui_2.png)
 
 ## Run Project
 
