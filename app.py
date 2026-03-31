@@ -42,10 +42,19 @@ if st.button("Analyze Resume"):
             processed_resume = preprocess_text(resume_text)
             processed_jd = preprocess_text(job_description)
 
-            score = calculate_match_score(processed_resume, processed_jd)
+            # score = calculate_match_score(processed_resume, processed_jd)
 
+            # resume_skills = extract_skills(resume_text)
+            # jd_skills = extract_skills(job_description)
             resume_skills = extract_skills(resume_text)
             jd_skills = extract_skills(job_description)
+
+            score = calculate_match_score(
+            processed_resume,
+            processed_jd,
+            resume_skills,
+            jd_skills
+            )           
 
             matched_skills = sorted(list(set(resume_skills).intersection(set(jd_skills))))
             missing_skills = sorted(list(set(jd_skills) - set(resume_skills)))

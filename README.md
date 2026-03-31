@@ -16,6 +16,11 @@ A Python-based web application that analyzes how well a resume matches a job des
 - PyPDF2
 - scikit-learn
 
+## Screenshots
+
+![UI](assets/ui_1.jpg)
+![Result](assets/ui_2.jpg)
+
 ## Run Project
 
 ```bash

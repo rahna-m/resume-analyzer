@@ -32,12 +32,30 @@ def preprocess_text(text):    #clean raw text before comparison
     return text
 
 # calculate similarity percentage between resume and job description
-def calculate_match_score(resume_text, job_description):
+# def calculate_match_score(resume_text, job_description):
+#     documents = [resume_text, job_description]
+#     # vectorizer = CountVectorizer().fit_transform(documents)
+#     vectorizer = TfidfVectorizer().fit_transform(documents)
+#     similarity = cosine_similarity(vectorizer)[0][1]
+#     return round(similarity * 100)
+def calculate_match_score(resume_text, job_description, resume_skills, jd_skills):
+    # 1. Text similarity (TF-IDF)
     documents = [resume_text, job_description]
-    # vectorizer = CountVectorizer().fit_transform(documents)
     vectorizer = TfidfVectorizer().fit_transform(documents)
     similarity = cosine_similarity(vectorizer)[0][1]
-    return round(similarity * 100)
+    similarity_score = similarity * 100
+
+    # 2. Skill match %
+    if len(jd_skills) > 0:
+        matched = set(resume_skills).intersection(set(jd_skills))
+        skill_match_percentage = (len(matched) / len(jd_skills)) * 100
+    else:
+        skill_match_percentage = 0
+
+    # 3. Final score (combined)
+    final_score = (similarity_score * 0.6) + (skill_match_percentage * 0.4)
+
+    return round(final_score)
 
 # def extract_skills(text):
 #     text = text.lower()
