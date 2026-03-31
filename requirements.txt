@@ -1,0 +1,5 @@
+# stores dependency names
+streamlit #it helps build a web app interface using only Python
+pandas  #To display the final result in table format
+PyPDF2 #To extract text from PDF resumes
+scikit-learn #To calculate text similarity between resume and job description
